@@ -5,7 +5,7 @@ applications:
   random-route: true
 #  host: articulate-jl
   instances: 1
-  buildpack: java_buildpack_offline
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
   stack: cflinuxfs2
   env:
     JAVA_OPTS: -Xss228k
