@@ -1,0 +1,31 @@
+---
+resources:
+- name: movies-fun-source
+  type: git
+  source:
+    uri: https://github.com/mysrini/apps-movie-fun-code.git
+    branch: spring-boot
+
+- name: deploy-movie-fun-service
+  type: cf
+  source:
+    api: api.system.cumuluslabs.io
+    username: {{cf-user}}
+    password: {{cf-password}}
+    organization: sm2-PAL-JAN8
+    space: sandbox
+    skip_cert_check: true
+
+jobs:
+
+- name: deploy
+  public: true
+  plan:
+  - get: movies-fun-source
+    trigger: true
+  - task: package
+    file: movies-fun-source/ci/tasks/package.yml
+  - put: deploy-movie-fun-service
+    params:
+      manifest: movies-fun-source/manifest.yml
+      path: package-output/movies-fun-service.jar
