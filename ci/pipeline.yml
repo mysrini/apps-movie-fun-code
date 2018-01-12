@@ -28,4 +28,4 @@ jobs:
   - put: deploy-movie-fun-service
     params:
       manifest: movies-fun-source/manifest.yml
-      path: package-output/movies-fun-service.jar
+      path: package-output/movies-fun-service.war
