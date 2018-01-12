@@ -9,5 +9,5 @@ applications:
   stack: cflinuxfs2
   env:
     JAVA_OPTS: -Xss228k
-#  services:
- # - attendee-service 1
+  services:
+  - attendee-mysql
